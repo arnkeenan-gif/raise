@@ -22,7 +22,7 @@
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color: var(--ink); background: #f5f7fb; overflow-x: hidden; }
+  body { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color: var(--ink); background: #fff; overflow-x: hidden; }
   h1, h2, .display { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; letter-spacing: -.01em; line-height: .96; font-variation-settings: "opsz" 96; }
   a { color: inherit; }
   .wrap { width: min(1100px, 100% - 40px); margin: 0 auto; }
@@ -40,22 +40,26 @@
   .bar .store:active { transform: scale(.97); }
   @media (max-width: 640px) { .bar nav { display: none; } .bar .logo span { display: none; } }
 
-  /* hero */
-  .hero { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: hidden; background: linear-gradient(180deg, #bfe0ff 0%, #d9ecff 45%, #f5f7fb 100%); }
-  .hero .art { position: absolute; inset: 0; background: url(/img/scene-meadow.jpg) center 62% / cover no-repeat; opacity: .9; mask-image: linear-gradient(#000 60%, transparent 100%); -webkit-mask-image: linear-gradient(#000 60%, transparent 100%); }
-  .hero .inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 24px; padding: 130px 0 70px; }
-  .hero h1 { font-size: clamp(54px, 8vw, 104px); margin: 0 0 18px; color: #fff; text-shadow: 0 4px 24px rgba(0,40,90,.35); }
-  .hero p { font-size: clamp(18px, 2vw, 22px); color: #fff; max-width: 520px; margin: 0 0 28px; line-height: 1.45; text-shadow: 0 2px 12px rgba(0,40,90,.4); font-weight: 500; }
-  .cta { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 26px; border-radius: 999px; box-shadow: 0 12px 30px rgba(0,0,0,.25); transition: transform .2s; }
+  /* hero: clean, light, one big phone */
+  .hero { position: relative; overflow: hidden; background: radial-gradient(1200px 600px at 50% -10%, #dbeaff 0%, #f5f7fb 60%); }
+  .hero .inner { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 30px; padding: 150px 0 40px; min-height: 92svh; }
+  .hero h1 { font-size: clamp(50px, 7vw, 92px); margin: 0 0 18px; color: var(--ink); }
+  .hero h1 em { font-style: normal; color: var(--terracotta); }
+  .hero p { font-size: clamp(17px, 1.9vw, 21px); color: var(--muted); max-width: 500px; margin: 0 0 28px; line-height: 1.5; }
+  .cta { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 700; font-size: 17px; padding: 15px 24px; border-radius: 999px; box-shadow: 0 10px 26px rgba(0,0,0,.18); transition: transform .2s; }
   .cta:hover { transform: translateY(-2px); }
-  .cta svg { width: 22px; height: 22px; fill: #fff; }
-  .cta.ghost { background: rgba(255,255,255,.85); color: var(--ink); box-shadow: 0 8px 24px rgba(0,40,90,.18); margin-left: 10px; }
-  .hero .rabbit { justify-self: center; width: min(420px, 80vw); filter: drop-shadow(0 30px 40px rgba(0,30,60,.3)); animation: float 5s ease-in-out infinite; }
-  @keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
-  @media (max-width: 800px) { .hero .inner { grid-template-columns: 1fr; text-align: center; padding-top: 120px; } .hero p { margin-inline: auto; } .hero .rabbit { order: -1; width: min(300px, 60vw); } .cta.ghost { margin-left: 0; margin-top: 10px; } }
+  .cta svg { width: 20px; height: 20px; fill: #fff; }
+  .cta.ghost { background: #fff; color: var(--ink); box-shadow: 0 6px 20px rgba(20,40,80,.10); margin-left: 10px; border: 1px solid #e6e9f0; }
+  .hero .shot { justify-self: center; width: min(340px, 78vw); border-radius: 46px; box-shadow: 0 40px 80px rgba(20,40,80,.22), 0 0 0 1px rgba(255,255,255,.7); overflow: hidden; }
+  .hero .shot img { display: block; width: 100%; }
+  .hero .rabbit { position: absolute; right: -10px; bottom: -14px; width: 220px; filter: drop-shadow(0 20px 30px rgba(0,30,60,.18)); animation: float 5s ease-in-out infinite; pointer-events: none; }
+  .hero .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .hero .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: #fff; border: 1px solid #e6e9f0; font-size: 13.5px; font-weight: 600; color: var(--muted); }
+  @keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+  @media (max-width: 800px) { .hero .inner { grid-template-columns: 1fr; text-align: center; padding-top: 120px; } .hero p { margin-inline: auto; } .hero .shot { width: min(280px, 70vw); } .hero .rabbit { display: none; } .cta.ghost { margin-left: 0; margin-top: 10px; } .hero .badges { justify-content: center; } }
 
   /* sections */
-  section { padding: 90px 0; }
+  section { padding: 96px 0; } section#features { background: #fff; }
   .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 12.5px; font-weight: 700; color: var(--terracotta); margin: 0 0 10px; }
   h2 { font-size: clamp(38px, 5vw, 62px); margin: 0 0 14px; }
   .lead { font-size: 19px; color: var(--muted); max-width: 640px; line-height: 1.5; margin: 0; }
@@ -68,7 +72,7 @@
   .feature ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
   .feature li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; font-weight: 500; }
   .feature li::before { content: ""; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--terracotta) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center/14px no-repeat; margin-top: 1px; }
-  .phone { justify-self: center; width: min(330px, 78vw); border-radius: 44px; box-shadow: 0 30px 60px rgba(20,40,80,.22), 0 0 0 1px rgba(255,255,255,.6); overflow: hidden; transform: rotate(-1.5deg); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .phone { justify-self: center; width: min(320px, 78vw); border-radius: 44px; box-shadow: 0 30px 60px rgba(20,40,80,.16), 0 0 0 1px #e6e9f0; overflow: hidden; transform: rotate(-1.5deg); transition: transform .5s cubic-bezier(.2,.8,.2,1); background: #f5f7fb; }
   .feature:nth-child(even) .phone { transform: rotate(1.5deg); }
   .phone:hover { transform: rotate(0) scale(1.02); }
   .phone img { display: block; width: 100%; }
@@ -80,26 +84,26 @@
   .glass .ico { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: linear-gradient(135deg, #fff, #eef3ff); box-shadow: inset 0 0 0 1px rgba(255,255,255,.9), 0 4px 12px rgba(20,40,80,.08); margin-bottom: 14px; font-size: 22px; }
   .glass h4 { margin: 0 0 6px; font-size: 19px; }
   .glass p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.5; }
-  .band { background: url(/img/scene-night.jpg) center 35% / cover no-repeat; position: relative; color: #fff; }
-  .band::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,30,50,.55), rgba(20,30,50,.75)); }
+  .band { background: #1e1e1e; position: relative; color: #fff; border-radius: 44px; margin: 0 20px; }
+  .band::before { content: ""; position: absolute; inset: 0; border-radius: 44px; background: radial-gradient(600px 300px at 20% 0%, rgba(200,90,60,.28), transparent 70%), radial-gradient(500px 300px at 90% 100%, rgba(58,154,253,.22), transparent 70%); }
   .band .wrap { position: relative; }
   .band .eyebrow { color: var(--gold); }
   .band .lead { color: rgba(255,255,255,.85); }
-  .band .glass { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.28); color: #fff; }
+  .band .glass { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.14); color: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .band .glass p { color: rgba(255,255,255,.8); }
   .band .glass .ico { background: rgba(255,255,255,.2); box-shadow: none; }
   
 
   /* steps */
   .steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 34px; }
-  .step { position: relative; padding: 26px 22px 22px; border-radius: 26px; background: #fff; box-shadow: 0 10px 30px rgba(20,40,80,.08); }
-  .step::before { counter-increment: s; content: counter(s); position: absolute; top: -14px; left: 20px; width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 800; display: grid; place-items: center; font-size: 15px; }
+  .step { position: relative; padding: 26px 22px 22px; border-radius: 26px; }
+  .step::before { counter-increment: s; content: counter(s); position: absolute; top: -14px; left: 20px; width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: var(--ink); font-weight: 800; display: grid; place-items: center; font-size: 15px; }
   .step h4 { margin: 6px 0 6px; font-size: 18px; }
-  .step p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.5; }
+  .step p { margin: 0; color: rgba(255,255,255,.75); font-size: 15.5px; line-height: 1.5; }
 
   /* pricing */
   .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 34px; max-width: 760px; }
-  .plan { padding: 28px 26px; border-radius: 30px; background: #fff; box-shadow: 0 12px 34px rgba(20,40,80,.10); position: relative; }
+  .plan { padding: 28px 26px; border-radius: 30px; background: #fff; border: 1px solid #e6e9f0; position: relative; }
   .plan.best { background: var(--ink); color: #fff; }
   .plan .tag { position: absolute; top: 18px; right: 18px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; background: var(--gold); color: var(--ink); }
   .plan .price { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; font-size: 52px; line-height: 1; margin: 12px 0 2px; }
@@ -134,15 +138,18 @@
 </div>
 
 <header class="hero" id="top">
-  <div class="art"></div>
   <div class="wrap inner">
     <div>
-      <h1>Grow a sourdough starter in ten days.</h1>
-      <p>Raise gives you a rabbit who reminds you to feed, reads how your jar is doing, and tells you the day it's ready to bake.</p>
+      <h1>Grow a sourdough starter in <em>ten days.</em></h1>
+      <p>A rabbit who reminds you to feed, reads how your jar is doing, and tells you the day it's ready to bake. One minute a day.</p>
       <a class="cta" href="https://raise-wine.vercel.app/install/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16.365 12.63c-.02-2.19 1.79-3.24 1.87-3.29-1.02-1.49-2.6-1.7-3.17-1.72-1.35-.14-2.63.79-3.31.79-.69 0-1.74-.77-2.86-.75-1.47.02-2.83.86-3.58 2.17-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.59 2.25 2.73 2.2 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.08 2.65-2.14.83-1.22 1.17-2.41 1.19-2.47-.03-.01-2.29-.88-2.32-3.53zM14.2 6.19c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.69-.92 2.68.97.08 1.96-.49 2.56-1.23z"/></svg>Download for iPhone</a>
       <a class="cta ghost" href="#features">See what it does</a>
+      <div class="badges"><span class="badge">🍞 Ten-day plan</span><span class="badge">🔔 Daily reminders</span><span class="badge">📷 Photo check-ins</span><span class="badge">🐰 A rabbit who cares</span></div>
     </div>
-    <img class="rabbit" src="/img/rabbit-hero.png" alt="Rocky the rabbit, cheering">
+    <div style="position:relative">
+      <div class="shot"><img src="/img/features/01-hero.jpg" alt="The Raise dashboard: Rocky on the meadow with the feed card below" fetchpriority="high"></div>
+      <img class="rabbit" src="/img/rabbit-hero.png" alt="">
+    </div>
   </div>
 </header>
 
@@ -204,7 +211,7 @@
   </div>
 </section>
 
-<section id="plus">
+<section id="plus" style="background:#f5f7fb">
   <div class="wrap">
     <p class="eyebrow reveal">Raise Plus</p>
     <h2 class="reveal">Free for three days. Then Plus.</h2>
@@ -217,7 +224,7 @@
         <ul><li>Statistics and the forecast</li><li>Ask Rocky, with photo check-ins</li><li>Challenges and the photo diary</li><li>Every background, hat, outfit and colour</li></ul>
       </div>
       <div class="plan best reveal">
-        <span class="tag">Save 44%</span>
+        <span class="tag">Best deal · 44% off</span>
         <h4 style="margin:0;font-size:18px">Yearly</h4>
         <div class="price">33 kr<small>/month</small></div>
         <p class="sub">399 kr billed once a year, after a 3-day free trial.</p>
