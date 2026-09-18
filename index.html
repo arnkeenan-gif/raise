@@ -122,47 +122,47 @@
   #plus .lead { margin: 0 auto; }
   .lead { font-size: 17.5px; color: var(--muted); max-width: 620px; line-height: 1.5; margin: 0; }
 
-  /* a grid of cards of different shapes, so the page doesn't read as four
-     identical rows */
-  .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 22px; }
-  .cell { padding: 30px 30px 0; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+  /* a tall card on the left, two stacked beside it, a wide strip below */
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 22px;
+    grid-template-areas: "feed feed feed snap snap snap" "feed feed feed stats stats stats" "dress dress dress dress dress dress"; }
+  .c-feed { grid-area: feed; } .c-snap { grid-area: snap; } .c-stats { grid-area: stats; } .c-dress { grid-area: dress; }
+
+  .cell { padding: 32px 32px 0; overflow: hidden; position: relative; display: flex; flex-direction: column; }
   .cell.pad { padding-bottom: 30px; }
   .cell .tagline { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .1em;
     text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-  .cell .tagline i { width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; background: rgba(31,33,39,.06); }
+  .cell .tagline i { width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; background: rgba(31,33,39,.07); }
   .cell .tagline svg { width: 13px; height: 13px; fill: var(--ink); }
-  .cell h3 { font-size: clamp(23px, 2.3vw, 30px); line-height: 1.06; margin: 0 0 8px; }
-  .cell p { font-size: 15.5px; line-height: 1.55; color: var(--muted); margin: 0; }
-  .cell ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .cell h3 { font-size: clamp(22px, 2.1vw, 29px); line-height: 1.06; margin: 0 0 8px; }
+  .cell p { font-size: 15.5px; line-height: 1.55; color: var(--muted); margin: 0; max-width: 46ch; }
+  .cell ul { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
   .cell li { display: flex; gap: 9px; align-items: flex-start; font-size: 15px; font-weight: 500; }
   .cell li::before { content: ""; flex: none; width: 19px; height: 19px; border-radius: 50%; background: var(--ink) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center/12px no-repeat; margin-top: 1px; }
 
-  /* the shapes */
-  .c-feed   { grid-column: span 4; }
-  .c-snap   { grid-column: span 2; }
-  .c-stats  { grid-column: span 3; }
-  .c-dress  { grid-column: span 3; }
+  /* the tall one: words at the top, the phone rising from the bottom edge */
+  .c-feed .shot-bleed { margin-top: auto; }
+  .shot-bleed { display: flex; justify-content: center; margin-left: -32px; margin-right: -32px; margin-bottom: -2px; padding-top: 24px; }
+  .shot-bleed img { width: min(250px, 66%); border-radius: 24px 24px 0 0; box-shadow: 0 -4px 34px rgba(28,52,84,.2); }
 
-  .shot-bleed { margin: 22px -30px -2px; display: flex; justify-content: center; }
-  .shot-bleed img { width: min(230px, 62%); border-radius: 22px 22px 0 0; box-shadow: 0 -2px 30px rgba(28,52,84,.18); }
-  .c-feed .inner2 { display: grid; grid-template-columns: 1fr auto; gap: 26px; align-items: center; }
-  .c-feed .shot-side img { width: 190px; border-radius: 22px; box-shadow: 0 14px 34px rgba(28,52,84,.20); display: block; }
+  /* the two on the right: words beside a small phone */
+  .c-snap, .c-stats { padding-bottom: 0; }
+  .c-snap .row, .c-stats .row { display: grid; grid-template-columns: 1fr 132px; gap: 20px; align-items: end; margin-top: 16px; }
+  .c-snap .row img, .c-stats .row img { width: 132px; border-radius: 18px 18px 0 0; box-shadow: 0 -2px 22px rgba(28,52,84,.18); display: block; margin-bottom: -2px; }
 
-  /* the wardrobe card */
-  .rack { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
-  .tile { width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; background: rgba(255,255,255,.78);
-    border: 1px solid rgba(255,255,255,.85); box-shadow: 0 6px 16px rgba(28,52,84,.12); }
-  .tile img { width: 38px; height: 38px; object-fit: contain; }
+  /* the wide strip: words on the left, the wardrobe on the right */
+  .c-dress .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 30px; align-items: center; }
+  .rack { display: flex; gap: 9px; flex-wrap: wrap; }
+  .tile { width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center; background: rgba(255,255,255,.78);
+    border: 1px solid rgba(255,255,255,.9); box-shadow: 0 6px 16px rgba(28,52,84,.12); }
+  .tile img { width: 34px; height: 34px; object-fit: contain; }
   .tile.scene { padding: 0; overflow: hidden; }
-  .tile.scene img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; }
-  .bunnies { display: flex; justify-content: center; align-items: flex-end; gap: -10px; margin: 16px -12px -2px; }
-  .bunnies img { width: 74px; margin: 0 -8px; filter: drop-shadow(0 10px 14px rgba(28,52,84,.18)); }
-  .bunnies img:nth-child(3) { width: 92px; z-index: 2; }
+  .tile.scene img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+  .bunnies { display: flex; justify-content: center; align-items: flex-end; margin: 14px -6px -30px; }
+  .bunnies img { width: 68px; margin: 0 -7px; filter: drop-shadow(0 10px 14px rgba(28,52,84,.18)); }
+  .bunnies img:nth-child(3) { width: 84px; z-index: 2; }
 
   @media (max-width: 900px) {
-    .c-feed, .c-snap, .c-stats, .c-dress { grid-column: span 6; }
-    .c-feed .inner2 { grid-template-columns: 1fr; }
-    .c-feed .shot-side { display: flex; justify-content: center; }
+    .bento { grid-template-areas: "feed feed feed feed feed feed" "snap snap snap stats stats stats" "dress dress dress dress dress dress"; }
   }
 
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 28px; counter-reset: s; }
@@ -173,8 +173,9 @@
 
   .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 30px auto 0; max-width: 680px; align-items: stretch; }
   .plan { padding: 30px 26px 26px; border-radius: 28px; position: relative; text-align: left; display: flex; flex-direction: column; }
-  .plan.best { background: rgba(28,30,36,.88); color: #fff; border-color: rgba(255,255,255,.14); box-shadow: 0 18px 44px rgba(20,24,34,.32); }
-  .plan.best .sub, .plan.best li { color: rgba(255,255,255,.82); }
+  .plan.best { background: rgba(255,255,255,.88); backdrop-filter: blur(34px) saturate(88%) brightness(1.1); -webkit-backdrop-filter: blur(34px) saturate(88%) brightness(1.1);
+    border-color: #fff; box-shadow: 0 20px 44px rgba(28,52,84,.18), 0 0 0 2px var(--gold); }
+  
   .plan .tag { position: absolute; top: -12px; left: 26px; font-size: 11.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: var(--gold); color: var(--ink); box-shadow: 0 6px 16px rgba(28,52,84,.18); }
   .plan .name { font-size: 15px; font-weight: 700; margin: 0 0 4px; opacity: .75; }
   .plan .price { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; font-size: 46px; line-height: 1; margin: 0 0 2px; letter-spacing: -.02em; }
@@ -183,9 +184,9 @@
   .plan ul { margin: 0 0 auto; padding: 0; list-style: none; display: grid; gap: 9px; font-size: 14.5px; }
   .plan li { display: flex; gap: 8px; align-items: flex-start; }
   .plan li::before { content: "✓"; font-weight: 800; color: var(--ink); opacity: .55; }
-  .plan.best li::before { color: var(--gold); opacity: 1; }
+  .plan.best li::before { color: #d09a2c; opacity: 1; }
   .plan .go { display: block; margin-top: 22px; text-align: center; text-decoration: none; font-weight: 700; font-size: 15.5px; padding: 14px; border-radius: 999px; background: var(--ink); color: #fff; box-shadow: 0 8px 20px rgba(31,33,39,.22); }
-  .plan.best .go { background: var(--gold); color: var(--ink); box-shadow: 0 8px 20px rgba(0,0,0,.3); }
+  .plan.best .go { background: var(--gold); color: var(--ink); box-shadow: 0 10px 22px rgba(224,168,60,.4); }
   .fine { font-size: 12.5px; color: rgba(91,97,112,.9); margin: 18px auto 0; max-width: 560px; line-height: 1.5; text-align: center; }
 
   footer { padding: 40px 0 110px; color: var(--muted); font-size: 14px; }
@@ -223,25 +224,25 @@
     .lead { font-size: 16px; }
     .head { display: block; padding: 20px 20px 18px; border-radius: 22px; }
 
-    .bento { grid-template-columns: 1fr; gap: 12px; margin-top: 16px; }
-    .c-feed, .c-snap, .c-stats, .c-dress { grid-column: 1 / -1; }
+    .bento { grid-template-columns: 1fr; gap: 12px; margin-top: 16px;
+      grid-template-areas: "feed" "snap" "stats" "dress"; }
     .cell { padding: 24px 20px 0; border-radius: 24px; }
     .cell.pad { padding-bottom: 22px; }
     .cell h3 { font-size: clamp(22px, 6.2vw, 27px); }
-    .cell p { font-size: 15.5px; }
+    .cell p { font-size: 15.5px; max-width: none; }
     .cell li { font-size: 14.5px; }
-    .c-feed .inner2 { grid-template-columns: 1fr; gap: 18px; }
-    .c-feed .shot-side { display: flex; justify-content: center; }
-    .c-feed .shot-side img { width: min(210px, 56vw); }
-    .shot-bleed { margin: 18px -20px -2px; }
-    .shot-bleed img { width: min(210px, 58%); }
+    .shot-bleed { margin-left: -20px; margin-right: -20px; padding-top: 18px; }
+    .shot-bleed img { width: min(215px, 62%); }
+    .c-snap .row, .c-stats .row { grid-template-columns: 1fr; gap: 16px; }
+    .c-snap .row img, .c-stats .row img { width: min(200px, 56vw); margin: 0 auto -2px; }
+    .c-dress .row { grid-template-columns: 1fr; gap: 6px; }
 
     .rack { gap: 8px; margin-top: 14px; }
-    .tile { width: 52px; height: 52px; border-radius: 14px; }
-    .tile img { width: 34px; height: 34px; }
-    .bunnies { margin: 14px 0 -2px; }
-    .bunnies img { width: 58px; margin: 0 -6px; }
-    .bunnies img:nth-child(3) { width: 72px; }
+    .tile { width: 50px; height: 50px; border-radius: 14px; }
+    .tile img { width: 32px; height: 32px; }
+    .bunnies { margin: 16px 0 -22px; }
+    .bunnies img { width: 56px; margin: 0 -6px; }
+    .bunnies img:nth-child(3) { width: 68px; }
 
     .steps { grid-template-columns: 1fr 1fr; gap: 26px 12px; margin-top: 30px; }
     .step { padding: 24px 14px 18px; border-radius: 20px; }
@@ -317,55 +318,59 @@
     </div>
 
     <div class="bento">
-      <div class="cell glass pad c-feed reveal">
-        <div class="inner2">
-          <div>
-            <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M12 3a6 6 0 00-6 6v4l-2 3h16l-2-3V9a6 6 0 00-6-6zm0 18a3 3 0 003-3H9a3 3 0 003 3z'/></svg></i>Every day</span>
-            <h3>Feed once a day.<br>The rabbit keeps count.</h3>
-            <p>Tap today when you've fed it. The ring counts down to the next feed, the week fills in, and your streak grows.</p>
-            <ul>
-              <li>Reminders at the time you choose</li>
-              <li>Counter or fridge, one feed a day or a week</li>
-              <li>Streak savers for the day you forget</li>
-            </ul>
-          </div>
-          <div class="shot-side"><img src="/img/features/feed.jpg" alt="The Raise dashboard with the feed card" loading="lazy"></div>
-        </div>
+      <div class="cell glass c-feed reveal">
+        <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M12 3a6 6 0 00-6 6v4l-2 3h16l-2-3V9a6 6 0 00-6-6zm0 18a3 3 0 003-3H9a3 3 0 003 3z'/></svg></i>Every day</span>
+        <h3>Feed once a day.<br>The rabbit keeps count.</h3>
+        <p>Tap today when you've fed it. The ring counts down to the next feed, the week fills in, and your streak grows.</p>
+        <ul>
+          <li>Reminders at the time you choose</li>
+          <li>Counter or fridge, one feed a day or a week</li>
+          <li>Streak savers for the day you forget</li>
+        </ul>
+        <div class="shot-bleed"><img src="/img/features/feed.jpg" alt="The Raise dashboard with the feed card" loading="lazy"></div>
       </div>
 
       <div class="cell glass c-snap reveal">
         <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M9 4l-1.5 2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-3.5L15 4zm3 5.5A4.5 4.5 0 1112 18a4.5 4.5 0 010-9z'/></svg></i>One photo</span>
-        <h3>Snap the jar.<br>It fills in the rest.</h3>
-        <p>The rabbit reads the rise, the bubbles and how lively it looks, straight into your day.</p>
-        <div class="shot-bleed"><img src="/img/features/snap.jpg" alt="A photo of the jar turned into readings" loading="lazy"></div>
+        <h3>Snap the jar. It fills in the rest.</h3>
+        <div class="row">
+          <p>The rabbit reads the rise, the bubbles and how lively it looks, straight into your day. The smell is the only thing left to you.</p>
+          <img src="/img/features/snap.jpg" alt="A photo of the jar turned into readings" loading="lazy">
+        </div>
       </div>
 
       <div class="cell glass c-stats reveal">
         <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M4 20h3v-7H4zm6.5 0h3V4h-3zM17 20h3v-11h-3z'/></svg></i>The numbers</span>
         <h3>Know the day it's ready.</h3>
-        <p>Flour, room warmth and your feeds together tell Raise when your starter will double reliably. The health score explains itself.</p>
-        <div class="shot-bleed"><img src="/img/features/stats.jpg" alt="Statistics with the forecast and charts" loading="lazy"></div>
+        <div class="row">
+          <p>Flour, room warmth and your feeds tell Raise when your starter will double reliably. The health score explains itself.</p>
+          <img src="/img/features/stats.jpg" alt="Statistics with the forecast and charts" loading="lazy">
+        </div>
       </div>
 
       <div class="cell glass pad c-dress reveal">
-        <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M4 7l1-3h14l1 3v2a2 2 0 01-4 0 2 2 0 01-4 0 2 2 0 01-4 0 2 2 0 01-4 0zm1 4.8V20h14v-8.2a3.6 3.6 0 01-3-.7 3.6 3.6 0 01-4 0 3.6 3.6 0 01-4 0 3.6 3.6 0 01-3 .7z'/></svg></i>Make it yours</span>
-        <h3>Dress the rabbit.</h3>
-        <p>Hats, glasses and aprons, eight fur colours, and nine places to stand.</p>
-        <div class="rack">
-          <span class="tile"><img src="/img/kit/wear-hat-toque.png" alt="Baker's hat"></span>
-          <span class="tile"><img src="/img/kit/wear-glasses-round.png" alt="Round glasses"></span>
-          <span class="tile"><img src="/img/kit/wear-hat-beret.png" alt="Beret"></span>
-          <span class="tile"><img src="/img/kit/wear-glasses-sun.png" alt="Sunglasses"></span>
-          <span class="tile scene"><img src="/img/kit/scene-mill.jpg" alt="The mill"></span>
-          <span class="tile scene"><img src="/img/kit/scene-night.jpg" alt="Night"></span>
-          <span class="tile scene"><img src="/img/kit/scene-sunset.jpg" alt="Sunset"></span>
-        </div>
-        <div class="bunnies">
-          <img src="/img/kit/rabbit-brown.png" alt="">
-          <img src="/img/kit/rabbit-mint.png" alt="">
-          <img src="/img/kit/rabbit-grey.png" alt="">
-          <img src="/img/kit/rabbit-blush.png" alt="">
-          <img src="/img/kit/rabbit-charcoal.png" alt="">
+        <div class="row">
+          <div>
+            <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M4 7l1-3h14l1 3v2a2 2 0 01-4 0 2 2 0 01-4 0 2 2 0 01-4 0 2 2 0 01-4 0zm1 4.8V20h14v-8.2a3.6 3.6 0 01-3-.7 3.6 3.6 0 01-4 0 3.6 3.6 0 01-4 0 3.6 3.6 0 01-3 .7z'/></svg></i>Make it yours</span>
+            <h3>Dress the rabbit.<br>Change the view.</h3>
+            <p>Hats, glasses and aprons, eight fur colours, and nine places to stand, from a wheat field to the mill at night. Your home-screen widgets follow.</p>
+            <div class="rack">
+              <span class="tile"><img src="/img/kit/wear-hat-toque.png" alt="Baker's hat"></span>
+              <span class="tile"><img src="/img/kit/wear-glasses-round.png" alt="Round glasses"></span>
+              <span class="tile"><img src="/img/kit/wear-hat-beret.png" alt="Beret"></span>
+              <span class="tile"><img src="/img/kit/wear-glasses-sun.png" alt="Sunglasses"></span>
+              <span class="tile scene"><img src="/img/kit/scene-mill.jpg" alt="The mill"></span>
+              <span class="tile scene"><img src="/img/kit/scene-night.jpg" alt="Night"></span>
+              <span class="tile scene"><img src="/img/kit/scene-sunset.jpg" alt="Sunset"></span>
+            </div>
+          </div>
+          <div class="bunnies">
+            <img src="/img/kit/rabbit-brown.png" alt="">
+            <img src="/img/kit/rabbit-mint.png" alt="">
+            <img src="/img/kit/rabbit-grey.png" alt="">
+            <img src="/img/kit/rabbit-blush.png" alt="">
+            <img src="/img/kit/rabbit-charcoal.png" alt="">
+          </div>
         </div>
       </div>
     </div>
