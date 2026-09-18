@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
   if (typeof body === "string") { try { body = JSON.parse(body); } catch { res.status(400).json({ error: "bad json" }); return; } }
   if (!body || !Array.isArray(body.messages)) { res.status(400).json({ error: "bad request" }); return; }
   body.max_tokens = Math.min(Number(body.max_tokens) || 600, 1000);
-  body.model = "claude-sonnet-5";
+  body.model = "claude-haiku-4-5-20251001";
   try {
     const upstream = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
