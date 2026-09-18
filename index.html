@@ -29,15 +29,15 @@
   body {
     margin: 0; color: var(--ink); overflow-x: hidden;
     font-family: Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background: #eaf3ff;
+    background: #f6faff;
   }
   /* the scene fades into a calm wash so the page stays readable all the way down */
   /* the scene sits behind everything; the wash over it thins as you scroll,
      so more of the artwork comes through the further down you go */
-  body::before { content: ""; position: fixed; inset: 0; z-index: -2;
-    background: url(/img/ground.jpg) center top / cover no-repeat; }
+  body::before { content: ""; position: absolute; inset: 0; z-index: -2;
+    background: url(/img/ground-tall.jpg) center top / 100% auto repeat-y; }
   body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background: #fbfdff; opacity: var(--wash, .42); transition: opacity .18s linear; }
+    background: #fbfdff; opacity: var(--wash, .40); transition: opacity .18s linear; }
   h1, h2, h3, .display { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; letter-spacing: -.01em; line-height: 1; font-variation-settings: "opsz" 96; }
   a { color: inherit; }
   .wrap { width: min(1080px, 100% - 40px); margin: 0 auto; }
@@ -302,7 +302,7 @@
     bar.classList.toggle('tucked', y > last && y > 120); last = y;
     // the wash thins from .46 to .12 over the first two screens
     const p = Math.min(1, y / (innerHeight * 2));
-    document.documentElement.style.setProperty('--wash', (0.46 - p * 0.34).toFixed(3));
+    document.documentElement.style.setProperty('--wash', (0.44 - p * 0.22).toFixed(3));
   }, { passive: true });
   const links = [...document.querySelectorAll('.bar nav a')];
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-40% 0px -50% 0px' });
