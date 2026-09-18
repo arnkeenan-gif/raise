@@ -16,6 +16,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* the page edges take the scene's colours, so the art reaches the top of
+     the screen and the bottom of the screen with no white band */
+  html { background: linear-gradient(#2c8ded 0%, #3591ea 26%, #7cb843 76%, #70b532 100%); background-attachment: fixed; }
+
   :root {
     color-scheme: light;
     --ink: #1f2127; --muted: #5b6170; --terracotta: #6b7280; --blue: #3a9afd; --gold: #f0b64a;
@@ -29,7 +33,7 @@
   body {
     margin: 0; color: var(--ink); overflow-x: hidden;
     font-family: Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    background: #f6faff;
+    background: transparent;
   }
   /* the scene fades into a calm wash so the page stays readable all the way down */
   /* the scene sits behind everything; the wash over it thins as you scroll,
@@ -37,10 +41,10 @@
   /* the app's own meadow, held a good deal taller than the window and slid
      upwards as the page scrolls, so more of the same picture keeps coming
      into view: the sky first, then the hills, then the flowers */
-  body::before { content: ""; position: fixed; left: 0; right: 0; top: 0; height: 176vh; z-index: -2;
+  body::before { content: ""; position: fixed; left: 0; right: 0; top: -60px; height: calc(176vh + 120px); z-index: -2;
     background: url(/img/ground.jpg) center top / cover no-repeat;
     transform: translateY(calc(var(--pan, 0) * -0.76vh)); will-change: transform; }
-  body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  body::after { content: ""; position: fixed; inset: -60px 0; z-index: -1; pointer-events: none;
     background: #fbfdff; opacity: var(--wash, .40); transition: opacity .18s linear; }
   h1, h2, h3, .display { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; letter-spacing: -.01em; line-height: 1; font-variation-settings: "opsz" 96; }
   a { color: inherit; }
@@ -189,7 +193,7 @@
   .plan.best .go { background: var(--gold); color: var(--ink); box-shadow: 0 10px 22px rgba(224,168,60,.4); }
   .fine { font-size: 12.5px; color: rgba(91,97,112,.9); margin: 18px auto 0; max-width: 560px; line-height: 1.5; text-align: center; }
 
-  footer { padding: 40px 0 110px; color: var(--muted); font-size: 14px; }
+  footer { padding: 40px 0 calc(110px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 14px; }
   footer .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; padding: 22px 26px; }
   footer a { text-decoration: none; margin-right: 16px; }
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
@@ -255,7 +259,7 @@
     .plan .sub { min-height: 0; }
     .fine { font-size: 12px; }
 
-    footer { padding: 26px 0 70px; }
+    footer { padding: 26px 0 calc(70px + env(safe-area-inset-bottom, 0px)); }
     footer .row { flex-direction: column; gap: 10px; text-align: center; padding: 20px; }
     footer a { margin: 0 7px; }
   }
