@@ -32,13 +32,12 @@
     background: #eaf3ff;
   }
   /* the scene fades into a calm wash so the page stays readable all the way down */
-  /* the scene, parallaxed: it moves slower than the page, so more of it
-     comes into view the further you scroll */
-  body::before { content: ""; position: fixed; inset: -10% 0 0; z-index: -2;
-    background: url(/img/ground.jpg) top center / cover no-repeat;
-    transform: translateY(calc(var(--scroll, 0) * -0.18px)); will-change: transform; }
+  /* the scene sits behind everything; the wash over it thins as you scroll,
+     so more of the artwork comes through the further down you go */
+  body::before { content: ""; position: fixed; inset: 0; z-index: -2;
+    background: url(/img/ground.jpg) center top / cover no-repeat; }
   body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background: linear-gradient(180deg, rgba(255,255,255,.04) 0%, rgba(252,253,255,.30) 35%, rgba(252,253,255,.40) 100%); }
+    background: #fbfdff; opacity: var(--wash, .42); transition: opacity .18s linear; }
   h1, h2, h3, .display { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; letter-spacing: -.01em; line-height: 1; font-variation-settings: "opsz" 96; }
   a { color: inherit; }
   .wrap { width: min(1080px, 100% - 40px); margin: 0 auto; }
@@ -301,7 +300,9 @@
   addEventListener('scroll', () => {
     const y = scrollY;
     bar.classList.toggle('tucked', y > last && y > 120); last = y;
-    document.documentElement.style.setProperty('--scroll', y);
+    // the wash thins from .46 to .12 over the first two screens
+    const p = Math.min(1, y / (innerHeight * 2));
+    document.documentElement.style.setProperty('--wash', (0.46 - p * 0.34).toFixed(3));
   }, { passive: true });
   const links = [...document.querySelectorAll('.bar nav a')];
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-40% 0px -50% 0px' });
