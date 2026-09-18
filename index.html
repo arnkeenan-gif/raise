@@ -122,16 +122,29 @@
   #plus .lead { margin: 0 auto; }
   .lead { font-size: 17.5px; color: var(--muted); max-width: 620px; line-height: 1.5; margin: 0; }
 
-  .feature { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; padding: 34px 38px; margin-top: 16px; }
-  .feature:nth-child(even) .phone { order: -1; }
-  .feature h3 { font-size: clamp(26px, 3vw, 36px); line-height: 1.04; margin: 0 0 10px; }
-  .feature p { font-size: 16.5px; line-height: 1.55; color: var(--muted); margin: 0 0 14px; max-width: 440px; }
-  .feature ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .feature { display: grid; grid-template-columns: 1fr minmax(0, 300px); gap: 44px; align-items: center; padding: 40px 44px; margin-top: 18px; }
+  .feature:nth-child(even) { grid-template-columns: minmax(0, 300px) 1fr; }
+  .feature:nth-child(even) .shotbox { order: -1; }
+  .feature .tagline { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .feature .tagline i { width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; background: rgba(31,33,39,.06); }
+  .feature .tagline svg { width: 14px; height: 14px; fill: var(--ink); }
+  .feature h3 { font-size: clamp(25px, 2.7vw, 34px); line-height: 1.05; margin: 0 0 10px; }
+  .feature p { font-size: 16.5px; line-height: 1.55; color: var(--muted); margin: 0 0 16px; max-width: 430px; }
+  .feature ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
   .feature li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; font-weight: 500; }
-  .feature li::before { content: ""; flex: none; width: 21px; height: 21px; border-radius: 50%; background: var(--ink) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center/13px no-repeat; margin-top: 1px; }
-  .phone { justify-self: center; width: min(244px, 60vw); border-radius: 36px; overflow: hidden; box-shadow: 0 24px 50px rgba(28,52,84,.20), 0 0 0 1px rgba(255,255,255,.6); }
-  .phone img { display: block; width: 100%; }
-  @media (max-width: 820px) { .feature { grid-template-columns: 1fr; gap: 22px; padding: 26px 22px; } .feature:nth-child(even) .phone { order: 0; } }
+  .feature li::before { content: ""; flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--ink) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center/12px no-repeat; margin-top: 1px; }
+  /* the phone: its own soft plate so the screenshot never floats on the art */
+  .shotbox { justify-self: center; position: relative; padding: 18px; border-radius: 34px;
+    background: linear-gradient(160deg, rgba(255,255,255,.9), rgba(255,255,255,.55));
+    border: 1px solid rgba(255,255,255,.8); box-shadow: 0 16px 40px rgba(28,52,84,.16); }
+  .shotbox img { display: block; width: 100%; border-radius: 26px; box-shadow: 0 10px 26px rgba(28,52,84,.22); }
+  @media (max-width: 860px) {
+    .feature, .feature:nth-child(even) { grid-template-columns: 1fr; gap: 24px; padding: 26px 22px; text-align: left; }
+    .feature:nth-child(even) .shotbox { order: 0; }
+    .shotbox { width: min(260px, 70vw); padding: 14px; }
+    .feature p { max-width: none; }
+  }
 
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 28px; counter-reset: s; }
   .step { position: relative; padding: 26px 22px 22px; border-radius: 26px; }
@@ -151,6 +164,54 @@
   .plan li::before { content: "✓  "; font-weight: 800; color: var(--ink); opacity: .55; }
   .plan.best li::before { color: var(--gold); }
   .fine { font-size: 12.5px; color: rgba(91,97,112,.85); margin: 18px auto 0; max-width: 560px; line-height: 1.5; }
+
+  /* ---------- phones ---------- */
+  @media (max-width: 720px) {
+    .wrap { width: calc(100% - 28px); }
+    .bar { top: calc(10px + env(safe-area-inset-top, 0px)); padding: 5px 5px 5px 6px; gap: 2px; width: calc(100% - 28px); justify-content: space-between; }
+    .bar .logo { padding: 5px 4px; font-size: 16px; }
+    .bar .logo span { display: inline; }
+    .bar .logo img { width: 28px; height: 28px; }
+    .bar .store { margin-left: 0; padding: 9px 14px 9px 11px; font-size: 14px; }
+
+    .hero { min-height: auto; padding: 104px 0 44px; }
+    .hero .inner { gap: 24px; }
+    .hero h1 { font-size: clamp(38px, 11vw, 52px); line-height: 1.02; }
+    .hero p { font-size: 16.5px; margin-bottom: 22px; }
+    .panel { padding: 26px 22px; border-radius: 26px; }
+    .kicker { font-size: 12.5px; margin-bottom: 16px; }
+    .actions { display: grid; gap: 10px; }
+    .cta, .cta.ghost { justify-content: center; width: 100%; margin: 0; font-size: 16px; padding: 15px 20px; }
+    .chips { gap: 6px; margin-top: 18px; }
+    .chip { font-size: 12.5px; padding: 7px 11px; }
+    .stage { width: min(230px, 62vw); }
+
+    section { padding: 44px 0; }
+    h2 { font-size: clamp(28px, 8vw, 36px); }
+    .lead { font-size: 16.5px; }
+    .head { padding: 20px 22px; border-radius: 22px; display: block; }
+
+    .feature, .feature:nth-child(even) { padding: 24px 20px; border-radius: 24px; gap: 20px; }
+    .feature h3 { font-size: clamp(23px, 6.6vw, 29px); }
+    .feature p { font-size: 16px; }
+    .feature li { font-size: 15px; }
+    .shotbox { width: min(240px, 66vw); padding: 12px; border-radius: 28px; }
+
+    .steps { grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 26px; }
+    .step { padding: 22px 16px 18px; border-radius: 22px; }
+    .step h4 { font-size: 16px; }
+    .step p { font-size: 14px; }
+
+    .plans { grid-template-columns: 1fr; gap: 14px; }
+    .plan { padding: 28px 22px 24px; }
+    .plan .price { font-size: 42px; }
+    footer .row { flex-direction: column; gap: 10px; text-align: center; padding: 20px; }
+    footer a { margin: 0 8px; }
+  }
+  @media (max-width: 420px) {
+    .steps { grid-template-columns: 1fr; }
+    .bar nav { display: none; }
+  }
 
   footer { padding: 40px 0 110px; color: var(--muted); font-size: 14px; }
   footer .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; padding: 22px 26px; }
@@ -211,38 +272,39 @@
 
     <div class="feature glass reveal">
       <div>
+        <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M12 3a6 6 0 00-6 6v4l-2 3h16l-2-3V9a6 6 0 00-6-6zm0 18a3 3 0 003-3H9a3 3 0 003 3z'/></svg></i>Every day</span>
         <h3>Feed once a day. The rabbit keeps count.</h3>
         <p>Tap today when you've fed it. The ring counts down to the next feed, the week fills in, and your streak grows.</p>
         <ul><li>Reminders at the time you choose</li><li>Counter or fridge, one feed a day or a week</li><li>Streak savers for the day you forget</li></ul>
       </div>
-      <div class="phone"><img src="/img/features/02-feed.jpg" alt="The feed card with the countdown ring and the week strip" loading="lazy"></div>
+      <div class="shotbox"><img src="/img/features/feed.jpg" alt="The Raise dashboard with the feed card" loading="lazy"></div>
     </div>
-
     <div class="feature glass reveal">
       <div>
+        <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M9 4l-1.5 2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-3.5L15 4zm3 5.5A4.5 4.5 0 1112 18a4.5 4.5 0 010-9z'/></svg></i>One photo</span>
         <h3>Snap the jar. It fills in the rest.</h3>
         <p>Take a photo and the rabbit reads the rise, the bubbles, the surface and how lively it looks, straight into your day. The smell is the only thing left to you.</p>
         <ul><li>Rise, bubbles and activity read from a photo</li><li>A day-by-day photo diary</li><li>Ask anything about your starter, any time</li></ul>
       </div>
-      <div class="phone"><img src="/img/features/08-snap.jpg" alt="A photo of the jar turned into readings" loading="lazy"></div>
+      <div class="shotbox"><img src="/img/features/snap.jpg" alt="A photo of the jar turned into readings" loading="lazy"></div>
     </div>
-
     <div class="feature glass reveal">
       <div>
-        <h3>A forecast for the day it's ready.</h3>
+        <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M4 20h3v-7H4zm6.5 0h3V4h-3zM17 20h3v-11h-3z'/></svg></i>The numbers</span>
+        <h3>A forecast for the day it&rsquo;s ready.</h3>
         <p>Flour, room warmth and your feeds together tell Raise when your starter will double reliably. The health score explains itself.</p>
         <ul><li>Health score with the reasons behind it</li><li>Ready-to-bake day, updated as you log</li><li>Rise, warmth, feeds and smell over two weeks</li></ul>
       </div>
-      <div class="phone"><img src="/img/features/04-grow.jpg" alt="Statistics with the forecast and charts" loading="lazy"></div>
+      <div class="shotbox"><img src="/img/features/stats.jpg" alt="Statistics with the forecast and charts" loading="lazy"></div>
     </div>
-
     <div class="feature glass reveal">
       <div>
+        <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M4 7l1-3h14l1 3v2a2 2 0 01-4 0 2 2 0 01-4 0 2 2 0 01-4 0 2 2 0 01-4 0zm1 4.8V20h14v-8.2a3.6 3.6 0 01-3-.7 3.6 3.6 0 01-4 0 3.6 3.6 0 01-4 0 3.6 3.6 0 01-3 .7z'/></svg></i>Make it yours</span>
         <h3>Dress the rabbit. Change the view.</h3>
         <p>Hats, glasses, aprons and fur colours, and nine places to stand, from a wheat field to the mill at night. The home-screen widgets follow.</p>
         <ul><li>Nine backgrounds, eight fur colours</li><li>Hats, glasses and outfits that fit every expression</li><li>Frosted-glass widgets with the live countdown</li></ul>
       </div>
-      <div class="phone"><img src="/img/features/07-dress.jpg" alt="The shop with hats and outfits on the rabbit" loading="lazy"></div>
+      <div class="shotbox"><img src="/img/features/shop.jpg" alt="The shop with hats on the rabbit" loading="lazy"></div>
     </div>
   </div>
 </section>
