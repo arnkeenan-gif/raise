@@ -5,6 +5,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3591ea">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Raise – grow a sourdough starter in ten days</title>
 <meta name="description" content="Raise is a sourdough starter tracker with a rabbit who keeps you company. Feed once a day, snap a photo, and bake on day ten.">
 <meta property="og:title" content="Raise – grow a sourdough starter in ten days">
@@ -18,7 +21,10 @@
 <style>
   /* the page edges take the scene's colours, so the art reaches the top of
      the screen and the bottom of the screen with no white band */
-  html { background: linear-gradient(#2c8ded 0%, #3591ea 26%, #7cb843 76%, #70b532 100%); background-attachment: fixed; }
+  html { background-color: #3591ea; background-image: linear-gradient(#2c8ded 0%, #3591ea 24%, #7cb843 78%, #70b532 100%); }
+  /* the very bottom of the document sits on grass, so the browser's bottom
+     bar and the home-indicator strip take that colour rather than white */
+  body { border-bottom: 1px solid #70b532; }
 
   :root {
     color-scheme: light;
