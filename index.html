@@ -34,8 +34,10 @@
   /* the scene fades into a calm wash so the page stays readable all the way down */
   /* the scene sits behind everything; the wash over it thins as you scroll,
      so more of the artwork comes through the further down you go */
-  body::before { content: ""; position: absolute; inset: 0; z-index: -2;
-    background: url(/img/ground-tall.jpg) center top / 100% auto repeat-y; }
+  /* the tall scene, panned by scroll: sky at the top of the page, the wheat
+     field in the middle, the bakery window by the end */
+  body::before { content: ""; position: fixed; inset: 0; z-index: -2;
+    background: url(/img/ground-tall.jpg) center calc(var(--pan, 0) * 1%) / cover no-repeat; }
   body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
     background: #fbfdff; opacity: var(--wash, .40); transition: opacity .18s linear; }
   h1, h2, h3, .display { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; letter-spacing: -.01em; line-height: 1; font-variation-settings: "opsz" 96; }
@@ -302,7 +304,10 @@
     bar.classList.toggle('tucked', y > last && y > 120); last = y;
     // the wash thins from .46 to .12 over the first two screens
     const p = Math.min(1, y / (innerHeight * 2));
-    document.documentElement.style.setProperty('--wash', (0.44 - p * 0.22).toFixed(3));
+    document.documentElement.style.setProperty('--wash', (0.44 - p * 0.20).toFixed(3));
+    // travel down the tall scene as the page scrolls
+    const max = document.documentElement.scrollHeight - innerHeight;
+    document.documentElement.style.setProperty('--pan', (max > 0 ? (y / max) * 100 : 0).toFixed(2));
   }, { passive: true });
   const links = [...document.querySelectorAll('.bar nav a')];
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-40% 0px -50% 0px' });
