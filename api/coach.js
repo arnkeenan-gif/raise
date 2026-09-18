@@ -4,7 +4,8 @@
 module.exports = async (req, res) => {
   if (req.method !== "POST") { res.status(405).end(); return; }
   if (req.headers["x-raise-app"] !== "app.tryraise.Raise") { res.status(403).json({ error: "forbidden" }); return; }
-  const key = process.env.ANTHROPIC_API_KEY;
+  // Trim: a pasted key often carries a newline, a space or wrapping quotes.
+  const key = (process.env.ANTHROPIC_API_KEY || "").trim().replace(/^["']|["']$/g, "");
   if (!key) { res.status(503).json({ error: "The coach isn't configured yet." }); return; }
   let body = req.body;
   if (typeof body === "string") { try { body = JSON.parse(body); } catch { res.status(400).json({ error: "bad json" }); return; } }
@@ -18,6 +19,10 @@ module.exports = async (req, res) => {
       body: JSON.stringify(body),
     });
     const text = await upstream.text();
+    if (upstream.status === 401) {
+      res.status(502).json({ error: "The coach key was rejected. Check ANTHROPIC_API_KEY in Vercel." });
+      return;
+    }
     res.status(upstream.status).setHeader("content-type", "application/json").send(text);
   } catch (e) {
     res.status(502).json({ error: "upstream unreachable" });
