@@ -70,47 +70,48 @@
   @media (max-width: 640px) { .bar nav { display: none; } .bar .logo span { display: none; } }
 
   /* hero */
-  .hero { min-height: 100svh; display: grid; place-items: center; padding: 116px 0 56px; position: relative; }
-  .hero .inner { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 40px; }
-  .hero .copy { position: relative; z-index: 2; }
-  .kicker { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 8px; border-radius: 999px;
-    background: rgba(255,255,255,.72); border: 1px solid var(--edge); font-size: 13.5px; font-weight: 600; color: var(--muted);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); margin-bottom: 20px; }
-  .kicker img { width: 22px; height: 22px; border-radius: 6px; }
-  .hero h1 { font-size: clamp(46px, 6.2vw, 82px); margin: 0 0 18px; line-height: .98; letter-spacing: -.02em; }
+  .hero { min-height: 100svh; display: grid; place-items: center; padding: 118px 0 54px; }
+  .hero .inner { display: grid; grid-template-columns: 1.06fr .94fr; align-items: center; gap: 46px; }
+  .hero .copy { padding: 40px 40px 36px; border-radius: 32px; }
+  .kicker { display: inline-flex; align-items: center; gap: 9px; padding: 6px 15px 6px 6px; border-radius: 999px;
+    background: rgba(31,33,39,.05); border: 1px solid rgba(31,33,39,.06); font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 22px; }
+  .kicker img { width: 24px; height: 24px; border-radius: 7px; }
+  .hero h1 { font-size: clamp(44px, 5.6vw, 74px); margin: 0 0 18px; line-height: .98; letter-spacing: -.025em; }
   .hero h1 em { font-style: normal; position: relative; white-space: nowrap; }
-  /* a hand-drawn underline under "ten days" */
-  .hero h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: .16em; border-radius: 999px;
-    background: var(--gold); opacity: .55; z-index: -1; }
-  .hero p { font-size: clamp(17px, 1.7vw, 19.5px); color: var(--muted); max-width: 460px; margin: 0 0 26px; line-height: 1.55; }
+  .hero h1 em::after { content: ""; position: absolute; left: -.02em; right: -.02em; bottom: .05em; height: .18em; border-radius: 999px;
+    background: var(--gold); opacity: .5; z-index: -1; }
+  .hero p { font-size: clamp(16.5px, 1.6vw, 19px); color: var(--muted); max-width: 440px; margin: 0 0 26px; line-height: 1.55; }
   .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
   .cta { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 700; font-size: 16.5px; padding: 15px 24px; border-radius: 999px; box-shadow: 0 12px 26px rgba(31,33,39,.24); transition: transform .2s, box-shadow .2s; }
   .cta:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(31,33,39,.28); }
   .cta svg { width: 19px; height: 19px; fill: #fff; }
-  .cta.ghost { background: rgba(255,255,255,.72); color: var(--ink); box-shadow: none; border: 1px solid var(--edge); font-weight: 600; }
-  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
-  .chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 13px; border-radius: 999px; background: rgba(255,255,255,.62); border: 1px solid var(--edge); font-size: 13px; font-weight: 600; color: var(--muted); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-  .chip svg { width: 14px; height: 14px; fill: var(--muted); flex: none; }
+  .cta.ghost { background: rgba(31,33,39,.05); color: var(--ink); box-shadow: none; border: 1px solid rgba(31,33,39,.07); font-weight: 600; }
+  .proof { display: flex; align-items: center; gap: 14px; margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(31,33,39,.08); }
+  .faces { display: flex; }
+  .faces img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: top; margin-left: -10px;
+    background: #eef3fb; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(28,52,84,.14); }
+  .faces img:first-child { margin-left: 0; }
+  .proof span { font-size: 13.5px; color: var(--muted); font-weight: 500; line-height: 1.35; }
+  .proof b { color: var(--ink); font-weight: 700; }
 
-  /* the phone, floating, with the widget and the rabbit around it */
-  .stage { position: relative; justify-self: center; width: min(330px, 76vw); }
-  .stage .shot { border-radius: 46px; overflow: hidden; box-shadow: 0 44px 90px rgba(28,52,84,.30), 0 0 0 1px rgba(255,255,255,.7); animation: bob 7s ease-in-out infinite; }
+  .stage { position: relative; justify-self: center; width: min(320px, 74vw); }
+  .stage .shot { border-radius: 46px; overflow: hidden; box-shadow: 0 44px 90px rgba(28,52,84,.32), 0 0 0 1px rgba(255,255,255,.7); animation: bob 7s ease-in-out infinite; }
   .stage .shot img { display: block; width: 100%; }
-  .float { position: absolute; border-radius: 22px; padding: 12px 14px; display: flex; align-items: center; gap: 10px;
-    background: rgba(255,255,255,.78); border: 1px solid var(--edge); box-shadow: 0 16px 34px rgba(28,52,84,.18);
-    backdrop-filter: blur(18px) saturate(170%); -webkit-backdrop-filter: blur(18px) saturate(170%); font-size: 13.5px; font-weight: 600; }
-  .float small { display: block; font-weight: 500; color: var(--muted); font-size: 12px; }
-  .float.one { top: 16%; left: -74px; animation: bob 6s ease-in-out infinite .4s; }
-  .float.two { bottom: 20%; right: -62px; animation: bob 6.5s ease-in-out infinite .9s; }
+  .float { position: absolute; border-radius: 20px; padding: 11px 13px; display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 16px 34px rgba(28,52,84,.20);
+    backdrop-filter: blur(18px) saturate(170%); -webkit-backdrop-filter: blur(18px) saturate(170%); font-size: 13px; font-weight: 700; }
+  .float small { display: block; font-weight: 500; color: var(--muted); font-size: 11.5px; }
+  .float.one { top: 13%; left: -70px; animation: bob 6s ease-in-out infinite .4s; }
+  .float.two { bottom: 17%; right: -58px; animation: bob 6.5s ease-in-out infinite .9s; }
   .float .dot { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: rgba(31,33,39,.06); }
   .float .dot svg { width: 16px; height: 16px; fill: var(--ink); }
   @keyframes bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-9px) } }
   @media (prefers-reduced-motion: reduce) { .stage .shot, .float { animation: none } }
-  @media (max-width: 980px) { .float.one { left: -20px } .float.two { right: -14px } }
-  @media (max-width: 820px) {
-    .hero { padding-top: 104px; }
-    .hero .inner { grid-template-columns: 1fr; text-align: center; gap: 28px; }
-    .hero p { margin-inline: auto; } .chips, .actions { justify-content: center; }
+  @media (max-width: 1000px) { .float.one { left: -16px } .float.two { right: -12px } }
+  @media (max-width: 860px) {
+    .hero .inner { grid-template-columns: 1fr; gap: 26px; }
+    .hero .copy { padding: 30px 26px; }
+    .hero p { max-width: none; }
     .stage { width: min(250px, 62vw); } .float { display: none; }
   }
 
@@ -122,28 +123,47 @@
   #plus .lead { margin: 0 auto; }
   .lead { font-size: 17.5px; color: var(--muted); max-width: 620px; line-height: 1.5; margin: 0; }
 
-  .feature { display: grid; grid-template-columns: 1fr minmax(0, 300px); gap: 44px; align-items: center; padding: 40px 44px; margin-top: 18px; }
-  .feature:nth-child(even) { grid-template-columns: minmax(0, 300px) 1fr; }
-  .feature:nth-child(even) .shotbox { order: -1; }
-  .feature .tagline { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: .1em;
+  /* a grid of cards of different shapes, so the page doesn't read as four
+     identical rows */
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 22px; }
+  .cell { padding: 30px 30px 0; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+  .cell.pad { padding-bottom: 30px; }
+  .cell .tagline { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .1em;
     text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-  .feature .tagline i { width: 26px; height: 26px; border-radius: 9px; display: grid; place-items: center; background: rgba(31,33,39,.06); }
-  .feature .tagline svg { width: 14px; height: 14px; fill: var(--ink); }
-  .feature h3 { font-size: clamp(25px, 2.7vw, 34px); line-height: 1.05; margin: 0 0 10px; }
-  .feature p { font-size: 16.5px; line-height: 1.55; color: var(--muted); margin: 0 0 16px; max-width: 430px; }
-  .feature ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
-  .feature li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; font-weight: 500; }
-  .feature li::before { content: ""; flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--ink) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center/12px no-repeat; margin-top: 1px; }
-  /* the phone: its own soft plate so the screenshot never floats on the art */
-  .shotbox { justify-self: center; position: relative; padding: 18px; border-radius: 34px;
-    background: linear-gradient(160deg, rgba(255,255,255,.9), rgba(255,255,255,.55));
-    border: 1px solid rgba(255,255,255,.8); box-shadow: 0 16px 40px rgba(28,52,84,.16); }
-  .shotbox img { display: block; width: 100%; border-radius: 26px; box-shadow: 0 10px 26px rgba(28,52,84,.22); }
-  @media (max-width: 860px) {
-    .feature, .feature:nth-child(even) { grid-template-columns: 1fr; gap: 24px; padding: 26px 22px; text-align: left; }
-    .feature:nth-child(even) .shotbox { order: 0; }
-    .shotbox { width: min(260px, 70vw); padding: 14px; }
-    .feature p { max-width: none; }
+  .cell .tagline i { width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; background: rgba(31,33,39,.06); }
+  .cell .tagline svg { width: 13px; height: 13px; fill: var(--ink); }
+  .cell h3 { font-size: clamp(23px, 2.3vw, 30px); line-height: 1.06; margin: 0 0 8px; }
+  .cell p { font-size: 15.5px; line-height: 1.55; color: var(--muted); margin: 0; }
+  .cell ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .cell li { display: flex; gap: 9px; align-items: flex-start; font-size: 15px; font-weight: 500; }
+  .cell li::before { content: ""; flex: none; width: 19px; height: 19px; border-radius: 50%; background: var(--ink) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.5l4.5 4.5L19 7.5'/></svg>") center/12px no-repeat; margin-top: 1px; }
+
+  /* the shapes */
+  .c-feed   { grid-column: span 4; }
+  .c-snap   { grid-column: span 2; }
+  .c-stats  { grid-column: span 3; }
+  .c-dress  { grid-column: span 3; }
+
+  .shot-bleed { margin: 22px -30px -2px; display: flex; justify-content: center; }
+  .shot-bleed img { width: min(230px, 62%); border-radius: 22px 22px 0 0; box-shadow: 0 -2px 30px rgba(28,52,84,.18); }
+  .c-feed .inner2 { display: grid; grid-template-columns: 1fr auto; gap: 26px; align-items: center; }
+  .c-feed .shot-side img { width: 190px; border-radius: 22px; box-shadow: 0 14px 34px rgba(28,52,84,.20); display: block; }
+
+  /* the wardrobe card */
+  .rack { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .tile { width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; background: rgba(255,255,255,.72);
+    border: 1px solid rgba(255,255,255,.85); box-shadow: 0 6px 16px rgba(28,52,84,.12); }
+  .tile img { width: 38px; height: 38px; object-fit: contain; }
+  .tile.scene { padding: 0; overflow: hidden; }
+  .tile.scene img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; }
+  .bunnies { display: flex; justify-content: center; align-items: flex-end; gap: -10px; margin: 16px -12px -2px; }
+  .bunnies img { width: 74px; margin: 0 -8px; filter: drop-shadow(0 10px 14px rgba(28,52,84,.18)); }
+  .bunnies img:nth-child(3) { width: 92px; z-index: 2; }
+
+  @media (max-width: 900px) {
+    .c-feed, .c-snap, .c-stats, .c-dress { grid-column: span 6; }
+    .c-feed .inner2 { grid-template-columns: 1fr; }
+    .c-feed .shot-side { display: flex; justify-content: center; }
   }
 
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 28px; counter-reset: s; }
@@ -152,69 +172,23 @@
   .step h4 { margin: 6px 0 6px; font-size: 17.5px; }
   .step p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
 
-  .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 28px auto 0; max-width: 700px; text-align: center; }
-  .plan { padding: 30px 24px 26px; border-radius: 28px; position: relative; }
-  .plan.best { background: rgba(31,33,39,.86); color: #fff; border-color: rgba(255,255,255,.18); }
-  .plan.best .sub, .plan.best li { color: rgba(255,255,255,.8); }
-  .plan .tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 11.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; background: var(--gold); color: var(--ink); }
-  .plan .price { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; font-size: 48px; line-height: 1; margin: 10px 0 2px; }
-  .plan .price small { font-family: Inter, sans-serif; font-weight: 600; font-size: 15px; opacity: .7; margin-left: 4px; }
-  .plan .sub { font-size: 14px; color: var(--muted); margin: 0 0 16px; }
-  .plan ul { margin: 0 auto; padding: 0; list-style: none; display: inline-grid; gap: 7px; font-size: 15px; text-align: left; }
-  .plan li::before { content: "✓  "; font-weight: 800; color: var(--ink); opacity: .55; }
-  .plan.best li::before { color: var(--gold); }
-  .fine { font-size: 12.5px; color: rgba(91,97,112,.85); margin: 18px auto 0; max-width: 560px; line-height: 1.5; }
-
-  /* ---------- phones ---------- */
-  @media (max-width: 720px) {
-    .wrap { width: calc(100% - 28px); }
-    .bar { top: calc(10px + env(safe-area-inset-top, 0px)); padding: 5px 5px 5px 6px; gap: 2px; width: calc(100% - 28px); justify-content: space-between; }
-    .bar .logo { padding: 5px 4px; font-size: 16px; }
-    .bar .logo span { display: inline; }
-    .bar .logo img { width: 28px; height: 28px; }
-    .bar .store { margin-left: 0; padding: 9px 14px 9px 11px; font-size: 14px; }
-
-    .hero { min-height: auto; padding: 100px 0 40px; }
-    .hero .inner { grid-template-columns: 1fr; }
-    .hero .copy { order: 0; }
-    .stage { order: 1; }
-    .hero .inner { gap: 24px; }
-    .hero h1 { font-size: clamp(38px, 11vw, 52px); line-height: 1.02; }
-    .hero p { font-size: 16.5px; margin-bottom: 22px; }
-    .panel { padding: 26px 22px; border-radius: 26px; }
-    .kicker { font-size: 12.5px; margin-bottom: 16px; }
-    .actions { display: grid; gap: 10px; }
-    .cta, .cta.ghost { justify-content: center; width: 100%; margin: 0; font-size: 16px; padding: 15px 20px; }
-    .chips { gap: 6px; margin-top: 18px; }
-    .chip { font-size: 12.5px; padding: 7px 11px; }
-    .stage { width: min(238px, 64vw); }
-
-    section { padding: 44px 0; }
-    h2 { font-size: clamp(28px, 8vw, 36px); }
-    .lead { font-size: 16.5px; }
-    .head { padding: 20px 22px; border-radius: 22px; display: block; }
-
-    .feature, .feature:nth-child(even) { padding: 24px 20px; border-radius: 24px; gap: 20px; }
-    .feature h3 { font-size: clamp(23px, 6.6vw, 29px); }
-    .feature p { font-size: 16px; }
-    .feature li { font-size: 15px; }
-    .shotbox { width: min(240px, 66vw); padding: 12px; border-radius: 28px; }
-
-    .steps { grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 26px; }
-    .step { padding: 22px 16px 18px; border-radius: 22px; }
-    .step h4 { font-size: 16px; }
-    .step p { font-size: 14px; }
-
-    .plans { grid-template-columns: 1fr; gap: 14px; }
-    .plan { padding: 28px 22px 24px; }
-    .plan .price { font-size: 42px; }
-    footer .row { flex-direction: column; gap: 10px; text-align: center; padding: 20px; }
-    footer a { margin: 0 8px; }
-  }
-  @media (max-width: 420px) {
-    .steps { grid-template-columns: 1fr; }
-    .bar nav { display: none; }
-  }
+  .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 26px auto 0; max-width: 680px; }
+  .plan { padding: 30px 26px 26px; border-radius: 28px; position: relative; text-align: left; }
+  .plan.best { background: rgba(31,33,39,.9); color: #fff; border-color: rgba(255,255,255,.16); }
+  .plan.best .sub, .plan.best li { color: rgba(255,255,255,.82); }
+  .plan .tag { position: absolute; top: -12px; left: 26px; font-size: 11.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: var(--gold); color: var(--ink); box-shadow: 0 6px 16px rgba(28,52,84,.18); }
+  .plan .name { font-size: 15px; font-weight: 700; margin: 0 0 4px; opacity: .75; }
+  .plan .price { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; font-size: 46px; line-height: 1; margin: 0 0 2px; letter-spacing: -.02em; }
+  .plan .price small { font-family: Inter, sans-serif; font-weight: 600; font-size: 15px; opacity: .65; margin-left: 5px; }
+  .plan .sub { font-size: 13.5px; color: var(--muted); margin: 0 0 18px; min-height: 2.6em; }
+  .plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14.5px; }
+  .plan li { display: flex; gap: 8px; align-items: flex-start; }
+  .plan li::before { content: "✓"; font-weight: 800; color: var(--ink); opacity: .5; }
+  .plan.best li::before { color: var(--gold); opacity: 1; }
+  .plan .go { display: block; margin-top: 20px; text-align: center; text-decoration: none; font-weight: 700; font-size: 15.5px; padding: 13px; border-radius: 999px; background: rgba(31,33,39,.06); color: var(--ink); }
+  .plan.best .go { background: #fff; color: var(--ink); }
+  .fine { font-size: 12.5px; color: rgba(91,97,112,.9); margin: 18px auto 0; max-width: 560px; line-height: 1.5; text-align: center; }
+  @media (max-width: 720px) { .plans { grid-template-columns: 1fr; } }
 
   footer { padding: 40px 0 110px; color: var(--muted); font-size: 14px; }
   footer .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; padding: 22px 26px; }
@@ -238,17 +212,21 @@
 <header class="hero" id="top">
   <div class="wrap inner">
     <div class="copy glass panel">
-      <span class="kicker"><img src="/img/icon-512.png" alt="">Your starter, and someone to keep it</span>
+      <span class="kicker"><img src="/img/icon-512.png" alt="">Sourdough starter tracker for iPhone</span>
       <h1>Grow a sourdough starter in <em>ten days.</em></h1>
       <p>A rabbit who reminds you to feed, reads your photos, and tells you the day it's ready to bake. One minute a day.</p>
       <div class="actions">
         <a class="cta" href="https://apps.apple.com/app/raise-sourdough-starter-pet/id0000000000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16.365 12.63c-.02-2.19 1.79-3.24 1.87-3.29-1.02-1.49-2.6-1.7-3.17-1.72-1.35-.14-2.63.79-3.31.79-.69 0-1.74-.77-2.86-.75-1.47.02-2.83.86-3.58 2.17-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.59 2.25 2.73 2.2 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.08 2.65-2.14.83-1.22 1.17-2.41 1.19-2.47-.03-.01-2.29-.88-2.32-3.53zM14.2 6.19c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.69-.92 2.68.97.08 1.96-.49 2.56-1.23z"/></svg>Download for iPhone</a>
         <a class="cta ghost" href="#features">See what it does</a>
       </div>
-      <div class="chips">
-        <span class="chip"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0116 0v6H4z"/></svg>Ten-day plan</span>
-        <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 00-6 6v4l-2 3h16l-2-3V9a6 6 0 00-6-6zm0 18a3 3 0 003-3H9a3 3 0 003 3z"/></svg>Daily reminders</span>
-        <span class="chip"><svg viewBox="0 0 24 24"><path d="M9 4l-1.5 2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-3.5L15 4zm3 5.5A4.5 4.5 0 1112 18a4.5 4.5 0 010-9z"/></svg>Photo check-ins</span>
+      <div class="proof">
+        <span class="faces">
+          <img src="/img/kit/rabbit-grey.png" alt="">
+          <img src="/img/kit/rabbit-brown.png" alt="">
+          <img src="/img/kit/rabbit-mint.png" alt="">
+          <img src="/img/kit/rabbit-charcoal.png" alt="">
+        </span>
+        <span><b>Ten days, one minute a day.</b><br>Free for the first three.</span>
       </div>
     </div>
     <div class="stage">
@@ -273,41 +251,58 @@
       <p class="lead">A starter is flour, water and patience. Raise takes care of the patience part.</p>
     </div>
 
-    <div class="feature glass reveal">
-      <div>
-        <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M12 3a6 6 0 00-6 6v4l-2 3h16l-2-3V9a6 6 0 00-6-6zm0 18a3 3 0 003-3H9a3 3 0 003 3z'/></svg></i>Every day</span>
-        <h3>Feed once a day. The rabbit keeps count.</h3>
-        <p>Tap today when you've fed it. The ring counts down to the next feed, the week fills in, and your streak grows.</p>
-        <ul><li>Reminders at the time you choose</li><li>Counter or fridge, one feed a day or a week</li><li>Streak savers for the day you forget</li></ul>
+    <div class="bento">
+      <div class="cell glass pad c-feed reveal">
+        <div class="inner2">
+          <div>
+            <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M12 3a6 6 0 00-6 6v4l-2 3h16l-2-3V9a6 6 0 00-6-6zm0 18a3 3 0 003-3H9a3 3 0 003 3z'/></svg></i>Every day</span>
+            <h3>Feed once a day.<br>The rabbit keeps count.</h3>
+            <p>Tap today when you've fed it. The ring counts down to the next feed, the week fills in, and your streak grows.</p>
+            <ul>
+              <li>Reminders at the time you choose</li>
+              <li>Counter or fridge, one feed a day or a week</li>
+              <li>Streak savers for the day you forget</li>
+            </ul>
+          </div>
+          <div class="shot-side"><img src="/img/features/feed.jpg" alt="The Raise dashboard with the feed card" loading="lazy"></div>
+        </div>
       </div>
-      <div class="shotbox"><img src="/img/features/feed.jpg" alt="The Raise dashboard with the feed card" loading="lazy"></div>
-    </div>
-    <div class="feature glass reveal">
-      <div>
+
+      <div class="cell glass c-snap reveal">
         <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M9 4l-1.5 2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-3.5L15 4zm3 5.5A4.5 4.5 0 1112 18a4.5 4.5 0 010-9z'/></svg></i>One photo</span>
-        <h3>Snap the jar. It fills in the rest.</h3>
-        <p>Take a photo and the rabbit reads the rise, the bubbles, the surface and how lively it looks, straight into your day. The smell is the only thing left to you.</p>
-        <ul><li>Rise, bubbles and activity read from a photo</li><li>A day-by-day photo diary</li><li>Ask anything about your starter, any time</li></ul>
+        <h3>Snap the jar.<br>It fills in the rest.</h3>
+        <p>The rabbit reads the rise, the bubbles and how lively it looks, straight into your day.</p>
+        <div class="shot-bleed"><img src="/img/features/snap.jpg" alt="A photo of the jar turned into readings" loading="lazy"></div>
       </div>
-      <div class="shotbox"><img src="/img/features/snap.jpg" alt="A photo of the jar turned into readings" loading="lazy"></div>
-    </div>
-    <div class="feature glass reveal">
-      <div>
+
+      <div class="cell glass c-stats reveal">
         <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M4 20h3v-7H4zm6.5 0h3V4h-3zM17 20h3v-11h-3z'/></svg></i>The numbers</span>
-        <h3>A forecast for the day it&rsquo;s ready.</h3>
+        <h3>Know the day it's ready.</h3>
         <p>Flour, room warmth and your feeds together tell Raise when your starter will double reliably. The health score explains itself.</p>
-        <ul><li>Health score with the reasons behind it</li><li>Ready-to-bake day, updated as you log</li><li>Rise, warmth, feeds and smell over two weeks</li></ul>
+        <div class="shot-bleed"><img src="/img/features/stats.jpg" alt="Statistics with the forecast and charts" loading="lazy"></div>
       </div>
-      <div class="shotbox"><img src="/img/features/stats.jpg" alt="Statistics with the forecast and charts" loading="lazy"></div>
-    </div>
-    <div class="feature glass reveal">
-      <div>
+
+      <div class="cell glass pad c-dress reveal">
         <span class="tagline"><i><svg viewBox='0 0 24 24'><path d='M4 7l1-3h14l1 3v2a2 2 0 01-4 0 2 2 0 01-4 0 2 2 0 01-4 0 2 2 0 01-4 0zm1 4.8V20h14v-8.2a3.6 3.6 0 01-3-.7 3.6 3.6 0 01-4 0 3.6 3.6 0 01-4 0 3.6 3.6 0 01-3 .7z'/></svg></i>Make it yours</span>
-        <h3>Dress the rabbit. Change the view.</h3>
-        <p>Hats, glasses, aprons and fur colours, and nine places to stand, from a wheat field to the mill at night. The home-screen widgets follow.</p>
-        <ul><li>Nine backgrounds, eight fur colours</li><li>Hats, glasses and outfits that fit every expression</li><li>Frosted-glass widgets with the live countdown</li></ul>
+        <h3>Dress the rabbit.</h3>
+        <p>Hats, glasses and aprons, eight fur colours, and nine places to stand.</p>
+        <div class="rack">
+          <span class="tile"><img src="/img/kit/wear-hat-toque.png" alt="Baker's hat"></span>
+          <span class="tile"><img src="/img/kit/wear-glasses-round.png" alt="Round glasses"></span>
+          <span class="tile"><img src="/img/kit/wear-hat-beret.png" alt="Beret"></span>
+          <span class="tile"><img src="/img/kit/wear-glasses-sun.png" alt="Sunglasses"></span>
+          <span class="tile scene"><img src="/img/kit/scene-mill.jpg" alt="The mill"></span>
+          <span class="tile scene"><img src="/img/kit/scene-night.jpg" alt="Night"></span>
+          <span class="tile scene"><img src="/img/kit/scene-sunset.jpg" alt="Sunset"></span>
+        </div>
+        <div class="bunnies">
+          <img src="/img/kit/rabbit-brown.png" alt="">
+          <img src="/img/kit/rabbit-mint.png" alt="">
+          <img src="/img/kit/rabbit-grey.png" alt="">
+          <img src="/img/kit/rabbit-blush.png" alt="">
+          <img src="/img/kit/rabbit-charcoal.png" alt="">
+        </div>
       </div>
-      <div class="shotbox"><img src="/img/features/shop.jpg" alt="The shop with hats on the rabbit" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -337,20 +332,31 @@
     </div>
     <div class="plans">
       <div class="plan glass reveal">
-        <h4 style="margin:0;font-size:17px">Monthly</h4>
-        <div class="price">59 kr<small>/month</small></div>
-        <p class="sub">Billed monthly. Cancel any time.</p>
-        <ul><li>Statistics and the forecast</li><li>Photo check-ins that fill in your day</li><li>Challenges and the photo diary</li><li>Every background, hat, outfit and colour</li></ul>
+        <p class="name">Monthly</p>
+        <div class="price" data-price="month">59 kr<small>/month</small></div>
+        <p class="sub">Billed every month. Cancel any time.</p>
+        <ul>
+          <li>Statistics and the forecast</li>
+          <li>Photo check-ins that fill in your day</li>
+          <li>Challenges and the photo diary</li>
+          <li>Every background, hat, outfit and colour</li>
+        </ul>
+        <a class="go" href="https://apps.apple.com/app/raise-sourdough-starter-pet/id0000000000" target="_blank" rel="noopener">Get Raise</a>
       </div>
       <div class="plan glass best reveal">
         <span class="tag">Best deal · 44% off</span>
-        <h4 style="margin:0;font-size:17px">Yearly</h4>
-        <div class="price">33 kr<small>/month</small></div>
-        <p class="sub">399 kr billed once a year, after 3 free days.</p>
-        <ul><li>Everything in Monthly</li><li>One payment, twelve months</li><li>A rabbit in pyjamas at night</li></ul>
+        <p class="name">Yearly</p>
+        <div class="price" data-price="per">33 kr<small>/month</small></div>
+        <p class="sub"><span data-price="year">399 kr</span> billed once a year, after three free days.</p>
+        <ul>
+          <li>Everything in Monthly</li>
+          <li>One payment, twelve months</li>
+          <li>A rabbit in pyjamas at night</li>
+        </ul>
+        <a class="go" href="https://apps.apple.com/app/raise-sourdough-starter-pet/id0000000000" target="_blank" rel="noopener">Start three days free</a>
       </div>
     </div>
-    <p class="fine">Prices in Danish kroner; the App Store shows your local price. Subscriptions renew until cancelled in your Apple Account settings.</p>
+    <p class="fine">Shown in <span data-price="currency">Danish kroner</span>; the App Store charges in your own currency. Subscriptions renew until cancelled in your Apple Account settings.</p>
   </div>
 </section>
 
@@ -382,6 +388,18 @@
   const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }), { threshold: .1 });
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
   setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('in')), 2500);
+
+  // Prices in the visitor's own currency, from the edge (country only, no IP kept).
+  fetch('/api/price').then(r => r.json()).then(p => {
+    const set = (key, value) => document.querySelectorAll(`[data-price="${key}"]`).forEach(el => {
+      const small = el.querySelector('small');
+      el.textContent = value;
+      if (small) el.appendChild(small);
+    });
+    set('month', p.month); set('year', p.year); set('per', p.per);
+    const names = { DKK: 'Danish kroner', SEK: 'Swedish kronor', NOK: 'Norwegian kroner', EUR: 'euro', GBP: 'pounds', USD: 'US dollars', CAD: 'Canadian dollars', AUD: 'Australian dollars', CHF: 'Swiss francs', PLN: 'z\u0142oty', JPY: 'yen' };
+    set('currency', names[p.currency] || p.currency);
+  }).catch(() => {});
 </script>
 </body>
 </html>
