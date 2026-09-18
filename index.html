@@ -34,10 +34,12 @@
   /* the scene fades into a calm wash so the page stays readable all the way down */
   /* the scene sits behind everything; the wash over it thins as you scroll,
      so more of the artwork comes through the further down you go */
-  /* the tall scene, panned by scroll: sky at the top of the page, the wheat
-     field in the middle, the bakery window by the end */
-  body::before { content: ""; position: fixed; inset: 0; z-index: -2;
-    background: url(/img/ground-tall.jpg) center calc(var(--pan, 0) * 1%) / cover no-repeat; }
+  /* the app's own meadow, held a good deal taller than the window and slid
+     upwards as the page scrolls, so more of the same picture keeps coming
+     into view: the sky first, then the hills, then the flowers */
+  body::before { content: ""; position: fixed; left: 0; right: 0; top: 0; height: 176vh; z-index: -2;
+    background: url(/img/ground.jpg) center top / cover no-repeat;
+    transform: translateY(calc(var(--pan, 0) * -0.76vh)); will-change: transform; }
   body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
     background: #fbfdff; opacity: var(--wash, .40); transition: opacity .18s linear; }
   h1, h2, h3, .display { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 800; letter-spacing: -.01em; line-height: 1; font-variation-settings: "opsz" 96; }
